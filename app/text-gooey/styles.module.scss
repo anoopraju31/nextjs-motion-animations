@@ -1,0 +1,16 @@
+.main {
+	@apply h-screen flex justify-center items-center;
+
+	svg {
+		width: 500px;
+		filter: url('#filter');
+
+		path {
+			display: none;
+		}
+
+		circle {
+			fill: black;
+		}
+	}
+}
