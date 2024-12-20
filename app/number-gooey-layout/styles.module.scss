@@ -1,0 +1,22 @@
+.main {
+	@apply py-[clamp(4.5rem,4.3571rem+0.7143vi,5rem)] px-[clamp(1.6875rem,1.6339rem+0.2679vi,1.875rem)] md:px-[clamp(2.25rem,2.1786rem+0.3571vi,2.5rem)] grid grid-rows-1 grid-cols-12 gap-[clamp(1rem,0.8571rem+1.0143vi,3.5rem)];
+
+	.number__container {
+		@apply col-span-5 sticky left-0 top-10 w-full h-[calc(100vw*0.208333333)] hidden md:flex text-[22vw] leading-none font-bold text-green-950 overflow-hidden;
+
+		.number {
+			@apply flex items-center h-full;
+		}
+		.numbers {
+			@apply flex flex-col transition-transform duration-1000 ease-in-out;
+		}
+	}
+
+	.card__container {
+		@apply flex flex-col gap-10 col-span-12 md:col-span-7;
+
+		.card {
+			@apply aspect-square w-full rounded-md bg-green-500;
+		}
+	}
+}
