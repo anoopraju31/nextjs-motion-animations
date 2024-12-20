@@ -42,7 +42,8 @@ export default function MultiBoxCounter() {
 
 				const boxID = index + 1 // Box identifier (Box 1, Box 2, etc.)
 				const rect = boxRef.getBoundingClientRect()
-				const threshold = window.innerHeight * 0.6 // 40vh threshold
+				// const threshold = window.innerHeight * 0.6 // 40vh threshold
+				const threshold = window.innerWidth * 0.22
 
 				if (rect.bottom <= threshold && !visibleBoxes.has(boxID)) {
 					// If the box crosses the threshold, increment counter
@@ -73,11 +74,14 @@ export default function MultiBoxCounter() {
 
 	return (
 		<ScrollToTopOnReload>
+			<section className={styles.placeholder}></section>
 			<main className={styles.main}>
 				<div className={styles.number__container}>
 					<span className={styles.number}>0</span>
 					<motion.div
-						style={{ y: `-${counter * 100}%` }}
+						style={{
+							y: counter < boxes.length - 1 ? `-${counter * 100}%` : `-${(boxes.length - 1) * 100}%`
+						}}
 						transition={{ type: 'spring', stiffness: 100, damping: 20, duration: 1.5 }}
 						className={styles.numbers}
 					>
@@ -91,11 +95,12 @@ export default function MultiBoxCounter() {
 				<div className={styles.card__container}>
 					{boxes.map((box, index) => (
 						<motion.div key={index} ref={addToRefs} className={styles.card}>
-							<h2>Box {box}</h2>
+							<h2>Box {box} </h2>
 						</motion.div>
 					))}
 				</div>
 			</main>
+			<section className={styles.placeholder}></section>
 		</ScrollToTopOnReload>
 	)
 }
